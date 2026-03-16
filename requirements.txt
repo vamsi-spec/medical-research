@@ -1,0 +1,43 @@
+# Core Framework
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+pydantic==2.5.3
+pydantic-settings==2.1.0
+
+# LLM & RAG ─ use modern langchain 1.x series (compatible with langchain-ollama 1.0.1)
+langchain>=0.3.0
+langchain-community>=0.3.0,<0.4     # community also moved to 0.3.x+ with core 1.x
+langchain-ollama==1.0.1
+
+# Vector Store & Search
+faiss-cpu==1.9.0.post1
+rank-bm25==0.2.2
+
+# Embeddings
+sentence-transformers==2.3.1
+
+# Database
+psycopg2-binary==2.9.10
+sqlalchemy==2.0.25
+
+# PubMed API
+biopython==1.83
+
+# Utilities
+python-dotenv==1.0.0
+httpx==0.26.0
+
+# Data Processing
+pandas==2.1.4
+numpy==1.26.3
+
+# Logging & Monitoring
+loguru==0.7.2
+python-json-logger==2.0.7
+
+# Testing
+pytest==7.4.4
+pytest-asyncio==0.23.3
+
+# Production
+gunicorn==21.2.0

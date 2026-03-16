@@ -1,0 +1,129 @@
+# Evidence Ranking Configuration
+# Adjust weights to prioritize different factors
+
+# Overall weights (must sum to 1.0)
+weights:
+  study_type: 0.40      # Evidence hierarchy
+  recency: 0.30         # Publication date
+  sample_size: 0.20     # Study size
+  journal: 0.10         # Journal impact
+
+# Study type scores (0.0 to 1.0)
+study_types:
+  meta_analysis: 1.00
+  systematic_review: 0.95
+  randomized_controlled_trial: 0.90
+  clinical_trial: 0.75
+  cohort_study: 0.60
+  case_control_study: 0.50
+  cross_sectional_study: 0.45
+  case_series: 0.30
+  case_report: 0.20
+  review: 0.40
+  expert_opinion: 0.15
+  other: 0.25
+
+# Recency decay
+recency:
+  current_year_score: 1.00
+  one_year_old: 0.95
+  two_years_old: 0.90
+  three_years_old: 0.85
+  four_years_old: 0.80
+  decay_rate_per_year: 0.07
+  minimum_score: 0.35
+
+# Sample size thresholds
+sample_size:
+  very_large: 10000      # Score: 1.0
+  large: 1000            # Score: 0.9
+  medium_large: 500      # Score: 0.8
+  medium: 100            # Score: 0.6
+  small: 50              # Score: 0.4
+  very_small: 0          # Score: 0.2
+  unknown_score: 0.5
+
+# Evidence levels
+evidence_levels:
+  level_a:
+    study_types:
+      - meta_analysis
+      - systematic_review
+    max_years_old: 3
+    min_sample_size: 500
+  
+  level_b:
+    study_types:
+      - randomized_controlled_trial
+      - clinical_trial
+      - cohort_study
+    max_years_old: 5
+    min_sample_size: 100
+  
+  # Everything else is Level C
+```
+
+---
+
+## ✅ **Phase 5 Complete! Summary**
+
+### **What We Built:**
+
+✅ **Evidence ranking service** with configurable weights  
+✅ **Study type hierarchy** (Meta-Analysis > RCT > Case Report)  
+✅ **Recency scoring** with exponential decay  
+✅ **Sample size extraction** from text  
+✅ **Evidence level grading** (A/B/C)  
+✅ **Composite ranking formula**  
+✅ **Integration with RAG pipeline**  
+✅ **Evidence-aware confidence scoring**  
+
+### **How It Works:**
+```
+Retrieved Documents
+    ↓
+Evidence Ranking
+  • Study type: 40%
+  • Recency: 30%
+  • Sample size: 20%
+  • Journal: 10%
+    ↓
+Sorted by Evidence Score
+    ↓
+Top K High-Quality Documents
+    ↓
+LLM Answer Generation
+    ↓
+Evidence Summary + Confidence
+```
+
+### **Key Improvements:**
+
+**Before Evidence Ranking:**
+- Documents ranked by relevance only
+- No quality consideration
+- Case reports mixed with RCTs
+
+**After Evidence Ranking:**
+- Meta-analyses prioritized
+- Recent studies weighted higher
+- Clear evidence levels (A/B/C)
+- Higher confidence in answers
+
+---
+
+## 📊 **Project Status Update**
+```
+Progress: ████████████████░░░░░░░░░░░░░░ 50%
+
+✅ Phase 1: Environment (100%)
+✅ Phase 2: Data Ingestion (100%)
+✅ Phase 3: Hybrid Retrieval (100%)
+✅ Phase 4: LLM Integration (100%)
+✅ Phase 5: Evidence Ranking (100%) ← NEW!
+🚧 Phase 6: Agent Tools (0%)
+🚧 Phase 7: Safety Layer (0%)
+🚧 Phase 8: Backend API (0%)
+🚧 Phase 9: Frontend (0%)
+🚧 Phase 10: Evaluation (0%)
+

@@ -1,0 +1,60 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+/na
+.Python
+venv/
+env/
+ENV/
+
+# Environment variables
+.env
+config/.env
+
+
+# Data folders (ignore generated data)
+data/raw/*
+data/processed/*
+data/embeddings/*
+
+# Keep folder structure
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/embeddings/.gitkeep
+
+# Embeddings / ML artifacts
+*.npy
+*.faiss
+*.pkl
+*.pt
+*.bin
+
+# Logs
+logs/*
+!logs/.gitkeep
+*.log
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Node / frontend
+node_modules/
+dist/
+.next/
