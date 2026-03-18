@@ -85,10 +85,14 @@ if __name__ == "__main__":
     print("="*60)
     
     # Load and check
-    embeddings = np.load("data/embeddings/chunk_embeddings.npy")
-    print(f"Embeddings shape: {embeddings.shape}")
-    print(f"Dimension: {embeddings.shape[1]}")
-    print(f"Total vectors: {embeddings.shape[0]}")
+    try:
+        embeddings = np.load("data/embeddings/chunk_embeddings.npy")
+        print(f"Embeddings shape: {embeddings.shape}")
+        print(f"Dimension: {embeddings.shape[1]}")
+        print(f"Total vectors: {embeddings.shape[0]}")
+    except (FileNotFoundError, EOFError) as e:
+        print(f"Failed to load embeddings: {e}")
+        print("Please ensure there are chunks to embed and the embeddings were successfully generated.")
     
     with get_db_context() as db:
         embedded_count = db.query(ProcessedChunk).filter(

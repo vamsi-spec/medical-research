@@ -9,6 +9,7 @@ from Backend.retrieval.vector_retriever import FAISSRetriever
 from Backend.retrieval.hybrid_retriever import HybridRetriever
 from Backend.utils.evaluation import RetrievalEvaluator
 from loguru import logger
+import numpy as np
 
 def test_retrieval_methods():
     print("="*70)
@@ -74,7 +75,7 @@ def test_retrieval_methods():
         
         # FAISS retrieval
         print("\n[FAISS Results]")
-        query_embedding = embedding_service.embed_text(query)
+        query_embedding = np.array(embedding_service.embed_text(query), dtype=np.float32)
         faiss_results = faiss.retrieve(query_embedding, top_k=3)
         for i, result in enumerate(faiss_results, 1):
             print(f"{i}. Score: {result['score']:.4f}")

@@ -1,7 +1,7 @@
 import apiClient from "./client";
 
 export const medicalAPI = {
-  askQuestion: async (MediaQueryList, topK = 5) => {
+  askQuestion: async (query, topK = 5) => {
     const response = await apiClient.post("/ask", {
       query,
       top_k: topK,

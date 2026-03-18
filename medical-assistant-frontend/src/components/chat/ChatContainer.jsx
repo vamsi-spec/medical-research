@@ -2,8 +2,9 @@ import React, { useRef, useEffect } from "react";
 import UserMessage from "./UserMessage";
 import AssistantMessage from "./AssistantMessage";
 import { Loader2, BookOpen } from "lucide-react";
+import LoadingSkeleton from "../ui/LoadingSkeleton";
 
-const ChatContainer = ({ messages, isLoading }) => {
+const ChatContainer = ({ messages, isLoading, onRate }) => {
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
@@ -48,21 +49,17 @@ const ChatContainer = ({ messages, isLoading }) => {
               {message.type === "user" ? (
                 <UserMessage message={message.content} />
               ) : (
-                <AssistantMessage data={message.data} />
+                <AssistantMessage
+                  data={message.data}
+                  messageIndex={index}
+                  onRate={onRate}
+                  query={message.query}
+                />
               )}
             </div>
           ))}
 
-          {isLoading && (
-            <div className="flex justify-start mb-4">
-              <div className="flex items-center gap-3 bg-white rounded-lg px-4 py-3 shadow-md border border-slate-200">
-                <Loader2 className="w-5 h-5 animate-spin text-blue-700" />
-                <span className="text-sm text-slate-600">
-                  Searching medical literature...
-                </span>
-              </div>
-            </div>
-          )}
+          {isLoading && <LoadingSkeleton />}
         </>
       )}
       <div ref={messagesEndRef} />

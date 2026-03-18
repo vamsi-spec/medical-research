@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import { Pill, FlaskConical, FileText } from "lucide-react";
 import Button from "../ui/Button";
 import DrugInteractionModal from "./DrugInteractionModal";
+import ClinicalTrialsModal from "./ClinicalTrialsModal";
+import MedicalCodeModal from "./MedicalCodeModal";
 
 const ToolsMenu = () => {
   const [showDrugModal, setShowDrugModal] = useState(false);
+  const [showTrialsModal, setShowTrialsModal] = useState(false);
+  const [showCodesModal, setShowCodesModal] = useState(false);
 
   return (
     <>
@@ -21,28 +25,47 @@ const ToolsMenu = () => {
           </Button>
 
           <Button
+            onClick={() => setShowTrialsModal(true)}
             variant="secondary"
-            className="w-full justify-start text-sm opacity-50 cursor-not-allowed"
-            disabled
+            className="w-full justify-start text-sm"
           >
             <FlaskConical className="w-4 h-4 mr-2" />
             Clinical Trials
           </Button>
 
           <Button
+            onClick={() => setShowCodesModal(true)}
             variant="secondary"
-            className="w-full justify-start text-sm opacity-50 cursor-not-allowed"
-            disabled
+            className="w-full justify-start text-sm"
           >
             <FileText className="w-4 h-4 mr-2" />
             Medical Codes
           </Button>
         </div>
+
+        {/* Help Text */}
+        <div className="mt-4 pt-4 border-t border-slate-200">
+          <p className="text-xs text-slate-500">
+            All tools use official medical databases (RxNav, ClinicalTrials.gov,
+            NLM)
+          </p>
+        </div>
       </div>
 
+      {/* Modals */}
       <DrugInteractionModal
         isOpen={showDrugModal}
         onClose={() => setShowDrugModal(false)}
+      />
+
+      <ClinicalTrialsModal
+        isOpen={showTrialsModal}
+        onClose={() => setShowTrialsModal(false)}
+      />
+
+      <MedicalCodeModal
+        isOpen={showCodesModal}
+        onClose={() => setShowCodesModal(false)}
       />
     </>
   );

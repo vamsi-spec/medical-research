@@ -4,8 +4,10 @@ import ReactMarkdown from "react-markdown";
 import Card from "../ui/Card";
 import Badge from "../ui/Badge";
 import Modal from "../ui/Modal";
+import BookmarkButton from "../bookmarks/BookmarkButton";
+import RatingButtons from "../feedback/RatingButtons";
 
-const AssistantMessage = ({ data }) => {
+const AssistantMessage = ({ data, messageIndex, onRate, query }) => {
   const [selectedCitation, setSelectedCitation] = useState(null);
 
   const {
@@ -227,6 +229,11 @@ const AssistantMessage = ({ data }) => {
           </div>
         </Modal>
       )}
+      {/* Actions Row */}
+      <div className="flex items-center justify-between mt-3 pt-3 border-t border-slate-200 dark:border-slate-700">
+        <RatingButtons messageIndex={messageIndex} onRate={onRate} />
+        <BookmarkButton message={{ data, query }} messageIndex={messageIndex} />
+      </div>
     </div>
   );
 };

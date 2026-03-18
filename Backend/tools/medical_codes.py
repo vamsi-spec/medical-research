@@ -196,14 +196,16 @@ class RealMedicalCodeLookup:
                 return [{
                     'code': code,
                     **details,
-                    'source': 'Public CPT Dataset'
+                    'source': 'Public CPT Dataset',
+                    'code_system': 'CPT'
                 }]
             
             if search_lower in details['description'].lower():
                 matches.append({
                     'code': code,
                     **details,
-                    'source': 'Public CPT Dataset'
+                    'source': 'Public CPT Dataset',
+                    'code_system': 'CPT'
                 })
         
         logger.info(f"Found {len(matches)} CPT codes")
