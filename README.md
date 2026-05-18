@@ -26,7 +26,6 @@ An intelligent medical research assistant that retrieves, ranks, and synthesizes
 - Export (PDF, Text, BibTeX)
 - Voice input (Chrome/Edge)
 - Keyboard shortcuts
-- PWA (installable app)
 - Medical disclaimer
 
 ---
@@ -94,7 +93,6 @@ An intelligent medical research assistant that retrieves, ranks, and synthesizes
   - React Hot Toast
   - jsPDF for export
   - Voice input (Web Speech API)
-  - PWA (Service Worker)
 
 
 ## 🚀 **Quick Start**
@@ -231,22 +229,6 @@ python scripts/evaluation/compare_retrievers.py
 # Generate PDF report
 python scripts/evaluation/generate_report.py
 ```
-
-### **Benchmark Categories**
-- **Treatment**: 8 queries (first-line therapies, management)
-- **Pharmacology**: 5 queries (mechanism of action, drug info)
-- **Diagnosis**: 5 queries (criteria, screening)
-- **Pathophysiology**: 5 queries (disease mechanisms)
-- **Prevention**: 4 queries (risk reduction, lifestyle)
-- **Adverse Effects**: 3 queries (side effects, complications)
-
-### **Performance by Difficulty**
-| Difficulty | Avg Confidence | Avg Response Time |
-|------------|----------------|-------------------|
-| Easy (10)  | 86.7% | 2.12s |
-| Medium (13)| 81.4% | 2.38s |
-| Hard (7)   | 74.2% | 2.89s |
-
 ---
 
 ## 🔒 **Safety & Compliance**
